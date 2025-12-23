@@ -8,6 +8,7 @@ type SectionCardProps = {
   requiredMap: Record<string, boolean>;
   errors: Record<string, { message?: string } | undefined>;
   onChange: (fieldId: string, value: unknown) => void;
+  versionId: string | number; 
 };
 
 export function SectionCard({
@@ -60,6 +61,7 @@ export function SectionCard({
               required={requiredMap[field.id]}
               error={errors[field.id]?.message}
               onChange={onChange}
+              versionId={versionId} 
             />
           </div>
         ))}
