@@ -110,16 +110,17 @@ export function FormRenderer({ versionId = 3 }: FormRendererProps) {
         <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
           {sections.map((section) => (
             <SectionCard
-              key={section.id ?? section.title}
-              section={section}
-              values={formValues}
-              visibility={currentFieldState.fieldState.visibility}
-              requiredMap={currentFieldState.fieldState.required}
-              errors={methods.formState.errors as Record<string, { message?: string } | undefined>}
-              onChange={(fieldId, value) =>
-                methods.setValue(fieldId, value, { shouldValidate: true })
-              }
-            />
+                key={section.id ?? section.title}
+                section={section}
+                values={formValues}
+                visibility={currentFieldState.fieldState.visibility}
+                requiredMap={currentFieldState.fieldState.required}
+                errors={methods.formState.errors}
+                onChange={(fieldId, value) =>
+                  methods.setValue(fieldId, value, { shouldValidate: true })
+                }
+                versionId={versionId}
+              />
           ))}
 
           {mutation.isPending && (
